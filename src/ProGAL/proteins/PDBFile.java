@@ -1,6 +1,5 @@
 package ProGAL.proteins;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -10,12 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ProGAL.geom3d.Point;
-import ProGAL.geom3d.Triangle;
-import ProGAL.geom3d.complex.alphaComplex.AlphaComplex;
-import ProGAL.geom3d.complex.CTriangle;
 import ProGAL.geom3d.superposition.RMSD;
 import ProGAL.geom3d.superposition.Transform;
-import ProGAL.geom3d.viewer.J3DScene;
 import ProGAL.io.IOToolbox;
 import ProGAL.io.WebIOToolbox;
 import ProGAL.proteins.structure.AminoAcidChain;
@@ -793,66 +788,5 @@ public class PDBFile extends File{
 		}
 	}
 
-	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		
-		PDBFile f = new PDBFile("/home/daisy/Downloads/2oed_cs_244_samples/sample_000267200000_2_91.576430.pdb", true);//folded
-//		PDBFile f = new PDBFile("/home/daisy/Downloads/2oed_cs_244_samples/sample_000000200000_2_284.178215.pdb", true);
-		
-//		PDBFile f = new PDBFile("/home/daisy/Downloads/1X0O.pdb", true);
-		J3DScene scene = J3DScene.createJ3DSceneInFrame();
-		List<Point> points = f.getAtomCoords();
-		AlphaComplex ac = new AlphaComplex(points, 2.8);
-		System.out.println("Point set size : "+points.size());
-		/*List<Point> pointList = new ArrayList<Point>(points.size()/2);
-		Vector translate = new Vector(-points.get(0).getCoord(0), -points.get(0).getCoord(1), -points.get(0).getCoord(2)); 
-		for (int i=0 ; i<343 ; i++) {
-			pointList.add(points.get(i).add(translate));
-		}*/
-/*		List<AtomRecord> AR = f.getAtomRecords();
-//		points.addAll(f.getAtomCoords(0, 1));
-		int maxAA = AR.get(AR.size()-1).residueNumber;
-		int indexAA = (int)Math.ceil(maxAA*0.5);
-		System.out.println("IndexAA = "+indexAA);
-		
-		f.writeAtomCoords("/Users/pawel/Downloads/1X0O_Coordinates.tex", points);
-		
-		//int j = 0;
-		//for (j=0 ; j<AR.size() ; j++) {
-		//	if (AR.get(j).residueNumber==indexAA ) break;
-		//}
-		//Line l = new Line(points.get(80), points.get(83));
-		System.out.println(points.size());
-//		AlphaComplex ac = new AlphaComplex(points, 2.0);
-		
-		l.toScene(scene, 0.1, Color.CYAN);
-		List<Integer> rotIndices = new ArrayList<Integer>(Arrays.asList(84, 85, 86, 89, 90, 91, 92, 93, 94, 95, 96, 97));
-		j = 0;
-		for (int i=0 ; i<points.size() ; i++) {
-			Sphere s = new Sphere(points.get(i), 0.9);
-			Color clr= Color.black;
-			//if (AR.get(i).residueNumber>= indexAA) {
-			if (rotIndices.contains(i)) {
-				clr = Color.RED;
-			}
-			scene.addShape(s, clr);
-//			scene.addShape(new TextShape(Integer.toString(i)+" - "+AR.get(i-1).aaType, pointList.get(i-1), 0.3));
-		}
-		for (CEdge edg : ac.getEdges()) {
-			System.out.println("new Edge");
-			LSS lss = new LSS(edg.getA(), edg.getB(), 0.02);
-			scene.addShape(lss, new Color(0, 0, 150, 100));
-			try { Thread.sleep(30); } catch (InterruptedException e) {}
-		}*/
-		
-/*		for(CTetrahedron tetr : ac.getTetrahedra()) {
-			scene.addShape(tetr, new Color(0, 255, 255, 100));
-		}*/
-		for (CTriangle tri : ac.getAlphaShape(2.8)) {
-				Triangle t = new Triangle(tri.getP1(), tri.getP2(), tri.getP3());
-				t.toScene(scene, new Color(50,205,50, 200));
-		}
-		
-		
-	}
 
 }

@@ -3,22 +3,18 @@ package ProGAL.geom3d.spanner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import ProGAL.dataStructures.Pair;
 import ProGAL.dataStructures.WeightedGraph;
 import ProGAL.dataStructures.shortestPath.Dijkstra;
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.complex.CEdge;
-import ProGAL.geom3d.complex.CTetrahedron;
 import ProGAL.geom3d.complex.CVertex;
 import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
-import ProGAL.geom3d.complex.tessellation.DelaunayTessellation;
 import ProGAL.geom3d.viewer.J3DScene;
 import ProGAL.geom3d.volumes.LSS;
-import ProGAL.geom3d.volumes.Tetrahedron;
 import ProGAL.math.Randomization;
 
 /**
@@ -91,7 +87,7 @@ public class GreedySpanner extends WeightedGraph{
 		for(Point p: points) pointList.add(p);
 		
 		List<Pair<Integer,Integer>> edges = new ArrayList<Pair<Integer,Integer>>();
-		DelaunayComplex dt = new DelaunayComplex(pointList);
+		DelaunayComplex dt = new DelaunayComplex(new ArrayList<PointI>(pointList));
 		for(CEdge e: dt.getEdges()){
 			int c0 = ((CVertex)e.getA()).idx;
 			int c1 = ((CVertex)e.getB()).idx;

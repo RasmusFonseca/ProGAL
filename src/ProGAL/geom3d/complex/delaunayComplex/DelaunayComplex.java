@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import ProGAL.geom3d.Point;
-import ProGAL.geom3d.volumes.Sphere;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.Vector;
 import ProGAL.geom3d.complex.CEdge;
 import ProGAL.geom3d.complex.CTriangle;
@@ -74,11 +73,11 @@ public class DelaunayComplex implements SimplicialComplex{
 	private final Flips flips;
 
 	/** Builds the Delaunay complex of the specified point-set */
-	public DelaunayComplex(List<Point> points) {
+	public DelaunayComplex(List<PointI> points) {
 		this.points = new ArrayList<CVertex>(points.size());
 		
 		int i=0;
-		for(Point p: points) this.points.add(new CVertex(p, i++));
+		for(PointI p: points) this.points.add(new CVertex(p, i++));
 		this.edges = new ArrayList<CEdge>(points.size()*6);
 		this.triangles = new ArrayList<CTriangle>(points.size()*6);
 		this.tetrahedra = new ArrayList<CTetrahedron>(points.size()*6);
@@ -92,13 +91,6 @@ public class DelaunayComplex implements SimplicialComplex{
 		completeComplex();
 	}
 	
-	/** TODO: Finish */
-	public boolean isDelaunay() {
-		for (CTetrahedron tetr : tetrahedra) {
-			Sphere sphere = new Sphere(tetr);
-		}
-		return true;
-	}
 	
 	/** Get the tetrahedra in the complex. The tetrahedra that has 'big points' as corners are not returned */
 	public List<CTetrahedron> getTetrahedra() {

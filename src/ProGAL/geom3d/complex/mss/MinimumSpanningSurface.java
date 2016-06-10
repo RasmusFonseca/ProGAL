@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
 
 import ProGAL.dataStructures.UnionFind;
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.PointList;
 import ProGAL.geom3d.complex.*;
 import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
@@ -61,7 +62,7 @@ public class MinimumSpanningSurface {
 	
 	public static void main(String[] args) {
 		List<Point> points = PointList.generatePointsInCube(100);
-		DelaunayComplex dc = new DelaunayComplex(points);
+		DelaunayComplex dc = new DelaunayComplex(new ArrayList<PointI>(points));
 		MinimumSpanningSurface mss = new MinimumSpanningSurface(dc);
 
 		

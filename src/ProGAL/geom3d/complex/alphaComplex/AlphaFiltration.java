@@ -10,14 +10,13 @@ import java.util.Set;
 import java.util.HashMap;
 
 import ProGAL.dataStructures.UnionFind;
-import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.Simplex;
 import ProGAL.geom3d.Triangle;
 import ProGAL.geom3d.complex.*;
 import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
 import ProGAL.geom3d.predicates.*;
 import ProGAL.geom3d.predicates.Predicates.SphereConfig;
-import ProGAL.geom3d.volumes.Tetrahedron;
 
 /**	<p>
  *  An alpha complex for a set of d-dimensional points and a real number alpha is a subset of the Delaunay complex 
@@ -79,7 +78,7 @@ public class AlphaFiltration {
 	 * Build the alpha-filtration of the specified point-list. Note that an entire Delaunay complex 
 	 * is built as part of this constructor.
 	 */
-	public AlphaFiltration(List<Point> pl){
+	public AlphaFiltration(List<PointI> pl){
 		this(new DelaunayComplex(pl));
 	}
 

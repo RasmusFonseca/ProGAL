@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Stack;
 
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.Simplex;
 import ProGAL.geom3d.complex.*;
 import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
-import ProGAL.geom3d.complex.delaunayComplex.RegularComplex;
 import ProGAL.geom3d.viewer.J3DScene;
 import ProGAL.proteins.PDBFile;
 
@@ -30,7 +30,7 @@ public class AlphaComplex extends AlphaFiltration implements SimplicialComplex{
 	 * Build the alpha-complex of the specified point-list. Note that an entire Delaunay complex 
 	 * is built as part of this constructor.
 	 */
-	public AlphaComplex(List<Point> pl, double alpha){
+	public AlphaComplex(List<PointI> pl, double alpha){
 		super(pl);
 		this.alpha = alpha;
 	}
@@ -279,7 +279,7 @@ public class AlphaComplex extends AlphaFiltration implements SimplicialComplex{
 		List<Point> points = new PDBFile("/Users/rfonseca/Downloads/3SQF.pdb").getAtomCoords();
 //		ProteinComplex pc = new ProteinComplex(f);
 //		List<Point> points = new PDBFile(PDBWebReader.downloadPDBFile("1XDXA")).getAtomCoords();
-		AlphaComplex ac = new AlphaComplex(points, 2.8);
+		AlphaComplex ac = new AlphaComplex(new ArrayList<PointI>(points), 2.8);
 		
 		J3DScene scene = J3DScene.createJ3DSceneInFrame();
 		for (CTetrahedron tetr : ac.getTetrahedra(0, 2.8)) {

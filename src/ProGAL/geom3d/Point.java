@@ -10,7 +10,7 @@ import ProGAL.math.Constants;
 /** 
  *  A point in (x,y,z)-space represented with double precision. 
  */
-public class Point extends ProGAL.geomNd.Point implements Simplex{
+public class Point extends ProGAL.geomNd.Point implements Simplex, PointI {
 	private static final long serialVersionUID = -2120468832687547475L;
 
 	/** Construct a point with the specified coordinates. */

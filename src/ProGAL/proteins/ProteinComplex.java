@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.complex.CEdge;
 import ProGAL.geom3d.complex.CTetrahedron;
 import ProGAL.geom3d.complex.CTriangle;
@@ -27,7 +28,7 @@ public class ProteinComplex extends AlphaComplex {
 	}
 
 	public ProteinComplex(PDBFile f, double waterRad) {
-		super(f.getAtomCoords(), waterRad);
+		super(new ArrayList<PointI>(f.getAtomCoords()), waterRad);
 		this.pdbFile = f;
 	}
 

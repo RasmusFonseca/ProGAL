@@ -2,9 +2,12 @@ package ProGAL.geom3d.complex.delaunayComplex.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.PointList;
 import ProGAL.geom3d.complex.CEdge;
 import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
@@ -20,7 +23,7 @@ public class DelaunayComplexTest {
 		pl.add(new Point(1,0,3));
 		pl.add(new Point(3,2,3));
 		
-		DelaunayComplex dc = new DelaunayComplex(pl);
+		DelaunayComplex dc = new DelaunayComplex(new ArrayList<PointI>(pl));
 		assertTrue(dc.checkTetrahedra());
 		
 		//The triangulation should contain two tetrahedra (and corresponding 0, 1 and 2-simplices)

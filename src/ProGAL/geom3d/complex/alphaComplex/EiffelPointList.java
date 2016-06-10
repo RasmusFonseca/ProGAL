@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.PointList;
 import ProGAL.geom3d.complex.alphaComplex.VoidTree;
-import ProGAL.geom3d.viewer.J3DScene;
-import ProGAL.geom3d.volumes.Sphere;
 
 public class EiffelPointList extends PointList{
 	private static final long serialVersionUID = 1L;
@@ -19,7 +18,7 @@ public class EiffelPointList extends PointList{
 //		for(Point p: points){
 //			scene.addShape(new Sphere(p,0.6), new java.awt.Color(255,0,0,200));
 //		}
-		VoidTree vt = new VoidTree(points,0);
+		VoidTree vt = new VoidTree(new ArrayList<PointI>(points),0);
 		new ProGAL.dataStructures.viewer.BinaryTreePainter(vt.root);
 	}
 	

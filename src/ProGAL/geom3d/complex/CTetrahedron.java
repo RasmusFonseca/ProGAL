@@ -6,8 +6,6 @@ import ProGAL.geom3d.LineSegment;
 import ProGAL.geom3d.Plane;
 import ProGAL.geom3d.Point;
 import ProGAL.geom3d.viewer.J3DScene;
-import ProGAL.geom3d.complex.delaunayComplex.RegularComplex;
-import ProGAL.geom3d.kineticDelaunay.Tet;
 import ProGAL.geom3d.volumes.Tetrahedron;
 
 /**

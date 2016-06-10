@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 
 public class CVertex extends Point {
 	private static final long serialVersionUID = 1L;
@@ -18,6 +19,16 @@ public class CVertex extends Point {
 	public final int idx;
 	
 	private final List<CEdge> adjacentEdges = new ArrayList<CEdge>();
+
+	public CVertex(PointI p, int idx){
+		this(p, false, idx);
+	}
+	public CVertex(PointI p, boolean bigpoint, int idx){ 	
+		super(p.getCoords());
+		setDegenerate(false);
+		this.bigPoint = bigpoint;
+		this.idx = idx;
+	}
 
 	
 	public boolean isBigpoint() {
@@ -57,17 +68,7 @@ public class CVertex extends Point {
 	}
 
 	
-	public CVertex(Point p, int idx){
-		this(p, false, idx);
-	}
-	public CVertex(Point p, boolean bigpoint, int idx){ 	
-		super(p);
-		setDegenerate(false);
-		this.bigPoint = bigpoint;
-		this.idx = idx;
-	}
-
-	public CVertex getDegPointOpposite() {
+		public CVertex getDegPointOpposite() {
 		return degPointOpposite;
 	}
 

@@ -3,9 +3,11 @@ package ProGAL.geom3d.complex.alphaComplex.tests;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import ProGAL.dataStructures.UnionFind;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.Simplex;
 import ProGAL.geom3d.complex.CTetrahedron;
 import ProGAL.geom3d.complex.CTriangle;
@@ -51,7 +53,7 @@ public class BettiDebugger {
 	public static void main(String[] args) {
 		PDBFile f1 = new PDBFile("/Users/ras/Documents/Datasets/NMR_Xray1/Xray/12_1R69.pdb");
 	
-		af = new AlphaFiltration(f1.getAtomCoords());
+		af = new AlphaFiltration(new ArrayList<PointI>(f1.getAtomCoords()));
 		i = af.getSimplices().size()-1; 
 		scene = J3DScene.createJ3DSceneInFrame();
 		uf = new UnionFind<CTetrahedron>();

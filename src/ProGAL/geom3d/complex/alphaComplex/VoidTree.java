@@ -7,8 +7,8 @@ import java.util.List;
 import ProGAL.geom3d.complex.CTetrahedron;
 import ProGAL.geom3d.complex.CTriangle;
 import ProGAL.geom3d.viewer.J3DScene;
-import ProGAL.geom3d.volumes.Sphere;
 import ProGAL.geom3d.Point;
+import ProGAL.geom3d.PointI;
 import ProGAL.geom3d.Simplex;
 import ProGAL.math.Randomization;
 import ProGAL.proteins.PDBFile;
@@ -19,7 +19,7 @@ public class VoidTree {
 	public Node root = null;
 //	J3DScene scene = J3DScene.createJ3DSceneInFrame();
 	
-	public VoidTree(List<Point> points, double interval) {
+	public VoidTree(List<PointI> points, double interval) {
 		this.alphaFil = new AlphaFiltration(points);
 		createTree(interval);
 	}
@@ -240,7 +240,7 @@ public class VoidTree {
 		
 		PDBFile pdb = new PDBFile(PDBWebReader.downloadPDBFile("2CRO"));
 		List<Point> points = pdb.getAtomCoords();
-		AlphaFiltration af = new AlphaFiltration(points);
+		AlphaFiltration af = new AlphaFiltration(new ArrayList<PointI>(points));
 		List<CTriangle> triangles = af.getAlphaShape(2.8);
 		J3DScene scene = J3DScene.createJ3DSceneInFrame();
 		for(CTriangle tri: triangles)
